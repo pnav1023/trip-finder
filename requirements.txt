@@ -1,3 +1,4 @@
 streamlit
 python-dotenv
-selenium
+seleniumbase
+webdriver-manager
