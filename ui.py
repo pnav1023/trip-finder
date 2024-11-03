@@ -10,6 +10,6 @@ if st.button('get trips'):
         st.write(tripDetails)
 
 if st.button('test scraper'):
-    st.write('testing scraper 1')
+    st.write('testing scraper 2')
     st.code(testScraper())
 

@@ -39,7 +39,7 @@ def getTrip(days):
     options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(
-            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() #chrome_type=ChromeType.CHROMIUM
+            ChromeDriverManager().install() #chrome_type=ChromeType.CHROMIUM
             ), 
             options=options
             )
