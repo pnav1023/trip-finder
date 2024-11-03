@@ -1,6 +1,8 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.core.os_manager import ChromeType
 import time
 from math import floor, ceil
@@ -42,12 +44,13 @@ def getTrip(days):
             options=options
             )
     driver.get("https://www.google.com/travel/flights")
-    time.sleep(5)
-
+    
     calendarButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div" 
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, calendarButtonPath))
+    )
     calendarButton = driver.find_element(By.XPATH, calendarButtonPath)
     calendarButton.click()
-    time.sleep(3)
 
     departureDay = days % 7 + 1
     departureWeek = ceil((days+1)/7)
@@ -56,23 +59,39 @@ def getTrip(days):
     returnWeek = ceil((departureDay+5)/7)
     returnPath =    f"/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div[3]/div[{returnWeek}]/div[{returnDay}]"
     print("depart"+departurePath)
+
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, departurePath))
+    )
     departureDateClick = driver.find_element(By.XPATH, departurePath)
     departureDateClick.click()
-    time.sleep(3)
-    # print("return"+returnPath)
-    # returnDateClick = driver.find_element(By.XPATH, returnPath)
-    # returnDateClick.click()
+    
+    print("return"+returnPath)
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, returnPath))
+    )
+    returnDateClick = driver.find_element(By.XPATH, returnPath)
+    returnDateClick.click()
 
     donePath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[3]/div[3]/div/button"
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, donePath))
+    )
     doneButton = driver.find_element(By.XPATH, donePath)
     doneButton.click()
 
     searchButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[2]/div/button/span[1]"
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, searchButtonPath))
+    )
     searchButtonPath = driver.find_element(By.XPATH, searchButtonPath)
     searchButtonPath.click()
     time.sleep(8)
 
     resultsPath = "/html/body/c-wiz[3]/div/div[2]/c-wiz/div[2]/div/div/div[1]/main/div/div[2]/div/ol"
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, resultsPath))
+    )
     results = driver.find_element(By.XPATH, resultsPath)
     tripDetails = formatTripDetails(results.text.split("\n"))
     driver.quit()
