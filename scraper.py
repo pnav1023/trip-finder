@@ -59,9 +59,9 @@ def getTrip(days):
     departureDateClick = driver.find_element(By.XPATH, departurePath)
     departureDateClick.click()
     time.sleep(3)
-    print("return"+returnPath)
-    returnDateClick = driver.find_element(By.XPATH, returnPath)
-    returnDateClick.click()
+    # print("return"+returnPath)
+    # returnDateClick = driver.find_element(By.XPATH, returnPath)
+    # returnDateClick.click()
 
     donePath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[3]/div[3]/div/button"
     doneButton = driver.find_element(By.XPATH, donePath)
