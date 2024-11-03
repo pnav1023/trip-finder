@@ -21,7 +21,7 @@ def testScraper():
     pageSource = driver.page_source
     time.sleep(5)
     driver.quit()
-    
+
     return pageSource
 
 def formatTripDetails(results):
@@ -58,7 +58,7 @@ def getTrip(days):
     print("depart"+departurePath)
     departureDateClick = driver.find_element(By.XPATH, departurePath)
     departureDateClick.click()
-    time.sleep(1)
+    time.sleep(3)
     print("return"+returnPath)
     returnDateClick = driver.find_element(By.XPATH, returnPath)
     returnDateClick.click()
