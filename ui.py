@@ -1,5 +1,5 @@
 import streamlit as st
-from scraper import getTrip
+from scraper import getTrip, testScraper
 
 st.title('trip finder')
 
@@ -8,4 +8,7 @@ if st.button('get trips'):
         tripDetails = getTrip(i)
         st.write(f"Dec {i+1} - Dec {i+6}")
         st.write(tripDetails)
+
+if st.button('test scraper'):
+    st.code(testScraper())
 

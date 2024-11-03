@@ -6,6 +6,24 @@ import time
 from math import floor, ceil
 from webdriver_manager.chrome import ChromeDriverManager
 
+def testScraper():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-gpu")
+    options.add_argument("--headless")
+
+    driver = webdriver.Chrome(
+            service=Service(
+                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+            ),
+            options=options,
+        )
+    driver.get("http://example.com")
+    pageSource = driver.page_source
+    time.sleep(5)
+    driver.quit()
+    
+    return pageSource
+
 def formatTripDetails(results):
     formattedTripDetails = []
     for i in range(floor(len(results)/4)):
