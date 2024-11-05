@@ -56,7 +56,7 @@ def insertLocation(driver, sourceAirport):
     locationInput.clear()
     locationInput.send_keys(sourceAirport)
     firstOptionPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[6]/div[3]/ul/li"
-                    #    /html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[6]/div[3]/ul/li[1]
+                    
     WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.XPATH, firstOptionPath))
     )
@@ -122,7 +122,7 @@ def getTrip(days, sourceAirport):
     options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(
-            ChromeDriverManager().install() #chrome_type=ChromeType.CHROMIUM
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() #chrome_type=ChromeType.CHROMIUM
             ), 
             options=options
             )
