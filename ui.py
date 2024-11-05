@@ -55,7 +55,7 @@ with col2:
     
     ss.filteredTrips = []
     
-    if len(ss.filteredTrips): 
+    if st.button('show trips'): 
         for i in range(len(dates)):
             sourceA = ss.travelData[0]['trips'][i]['details']
             sourceB = ss.travelData[1]['trips'][i]['details']
