@@ -21,7 +21,7 @@ with st.echo():
     def get_driver():
         return webdriver.Chrome(
             service=Service(
-                ChromeDriverManager().install()
+                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
             ),
             options=options,
         )
