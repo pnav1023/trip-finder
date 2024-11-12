@@ -1,5 +1,6 @@
 import streamlit as st
 from scraper import getTrip, testScraper
+from format_flights import formatFlights
 import pandas as pd
 
 ss = st.session_state
@@ -13,6 +14,21 @@ if 'filteredTrips' not in ss:
 
 st.title('trip finder')
 
+def formatData(source):
+    sourceDataA = {
+        'sourceAirport': f'{source}',
+        'trips': []
+    }
+    for i in range(3):
+        tripDetails = getTrip(i, source)
+        sourceDataA['trips'].append(
+                {
+                    'dates': f"Dec {i+1} - Dec {i+6}",
+                    "details": tripDetails
+                }
+            )
+    ss.travelData.append(sourceDataA) 
+
 col1, col2 = st.columns([1, 1])
 with col1:
     st.text_input('Source Airport 1', 'AUS', disabled=True)
@@ -22,72 +38,21 @@ with col1:
     st.text_input('Duration', '5', disabled=True)
     if st.button('get trips'):
         if len(ss.travelData) == 0:
-            sourceDataA = {
-                'sourceAirport': 'AUS',
-                'trips': []
-            }
-            for i in range(3):
-                tripDetails = getTrip(i, "AUS")
-                sourceDataA['trips'].append(
-                        {
-                            'dates': f"Dec {i+1} - Dec {i+6}",
-                            "details": tripDetails
-                        }
-                    )
-            ss.travelData.append(sourceDataA) 
-
-            sourceDataB = {
-                'sourceAirport': 'JFK',
-                'trips': []
-            }
-            for i in range(3):
-                tripDetails = getTrip(i, "JFK")
-                sourceDataB['trips'].append(
-                        {
-                            'dates': f"Dec {i+1} - Dec {i+6}",
-                            "details": tripDetails
-                        }
-                    )
-            ss.travelData.append(sourceDataB)   
+            formatData("AUS") 
+            formatData("JFK")
+            # formatData("LAX")
+            # formatData("ORD")
+            # formatData("DFW")
+            # formatData("DEN")
+            # formatData("SFO")
 
 with col2:
     dates = ['Dec 1 - Dec 6', 'Dec 2 - Dec 7', 'Dec 3 - Dec 8']
-    
-    ss.filteredTrips = []
-    
     if st.button('show trips'): 
-        for i in range(len(dates)):
-            sourceA = ss.travelData[0]['trips'][i]['details']
-            sourceB = ss.travelData[1]['trips'][i]['details']
-            for tripA in sourceA:
-                for tripB in sourceB:
-                    if tripA['destination'] == tripB['destination']:
-                        j = 0
-                        for j in range(len(ss.filteredTrips)):
-                            totalPrice = 0
-                            for trip in ss.filteredTrips[j]['trips']:
-                                totalPrice += trip['price']
-                            if totalPrice > tripA['price'] + tripB['price']:
-                                break
-                        ss.filteredTrips.insert(j, 
-                        {
-                            'dates': dates[i],
-                            'destination': tripA['destination'],
-                            'trips': [{
-                                        'source': ss.travelData[0]['sourceAirport'],
-                                        'price': tripA['price']
-                                    },
-                                    {
-                                        'source': ss.travelData[1]['sourceAirport'],
-                                        'price': tripB['price']
-                                    }]
-                        })
-             
+        ss.filteredTrips = formatFlights(ss.travelData)
         for trip in ss.filteredTrips:
             with st.expander(f"Go to {trip['destination']} from {trip['dates']}"):
+                st.write(f"Total price: ${trip['total_price']}")
                 for trip_detail in trip['trips']:
                     st.write(f"Flights from {trip_detail['source']} to {trip['destination']} start at ${trip_detail['price']}")
     
-
-
-

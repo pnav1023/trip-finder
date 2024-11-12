@@ -21,7 +21,7 @@ def get_driver():
 
     return webdriver.Chrome(
         service=Service(
-            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() #chrome_type=ChromeType.CHROMIUM
         ),
         options=options,
     )
@@ -138,7 +138,7 @@ def getTrip(days, sourceAirport):
     rawTripDetails = getResults(driver)
 
     tripDetails = formatTripDetails(rawTripDetails)
-    driver.quit()
+    # driver.quit()
 
     return tripDetails
 
