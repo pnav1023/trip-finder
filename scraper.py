@@ -1,3 +1,4 @@
+import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
@@ -11,6 +12,19 @@ from selenium.webdriver.common.keys import Keys
 
 
 TRIP_LENGTH = 5
+
+@st.cache_resource
+def get_driver():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-gpu")
+    options.add_argument("--headless")
+
+    return webdriver.Chrome(
+        service=Service(
+            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+        ),
+        options=options,
+    )
 
 def testScraper():
     options = webdriver.ChromeOptions()
@@ -34,7 +48,7 @@ def formatTripDetails(results):
     results = results.text.split("\n")
     formattedTripDetails = []
     for i in range(floor(len(results)/4)):
-        if len(formattedTripDetails) == 6: # added for POC purposes, more string validation needs to be done before removing this
+        if len(formattedTripDetails) == 10: # added for POC purposes, more string validation needs to be done before removing this
             break
         price = results[i*4+3].replace("$", "")
         if "hr" not in price:
@@ -49,7 +63,7 @@ def formatTripDetails(results):
 
 def insertLocation(driver, sourceAirport):
     locationPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input"
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, locationPath))
     )   
     locationInput = driver.find_element(By.XPATH, locationPath)
@@ -57,7 +71,7 @@ def insertLocation(driver, sourceAirport):
     locationInput.send_keys(sourceAirport)
     firstOptionPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[6]/div[3]/ul/li"
                     
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, firstOptionPath))
     )
     firstOption = driver.find_element(By.XPATH, firstOptionPath)
@@ -65,7 +79,7 @@ def insertLocation(driver, sourceAirport):
 
 def insertInputs(driver, days):
     calendarButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div" 
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, calendarButtonPath))
     )
     calendarButton = driver.find_element(By.XPATH, calendarButtonPath)
@@ -79,21 +93,21 @@ def insertInputs(driver, days):
     returnPath =    f"/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div[3]/div[{returnWeek}]/div[{returnDay}]"
     print("depart"+departurePath)
 
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, departurePath))
     )
     departureDateClick = driver.find_element(By.XPATH, departurePath)
     departureDateClick.click()
     
     print("return"+returnPath)
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, returnPath))
     )
     returnDateClick = driver.find_element(By.XPATH, returnPath)
     returnDateClick.click()
 
     donePath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[3]/div[3]/div/button"
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, donePath))
     )
     doneButton = driver.find_element(By.XPATH, donePath)
@@ -103,29 +117,20 @@ def insertInputs(driver, days):
 
 def getResults(driver):
     searchButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[2]/div/button/span[1]"
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, searchButtonPath))
     )
     searchButtonPath = driver.find_element(By.XPATH, searchButtonPath)
     searchButtonPath.click()
 
     resultsPath = "/html/body/c-wiz[3]/div/div[2]/c-wiz/div[2]/div/div/div[1]/main/div/div[2]/div/ol"
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 40).until(
         EC.presence_of_element_located((By.XPATH, resultsPath))
     )
     return driver.find_element(By.XPATH, resultsPath)
 
 def getTrip(days, sourceAirport):
-    options = webdriver.ChromeOptions()
-    # Below options used to prevent errors when deployed
-    options.add_argument("--disable-gpu")
-    options.add_argument("--headless")
-    driver = webdriver.Chrome(
-        service=Service(
-            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install() #chrome_type=ChromeType.CHROMIUM
-            ), 
-            options=options
-            )
+    driver = get_driver()
     driver.get("https://www.google.com/travel/flights")
     insertInputs(driver, days)
     insertLocation(driver, sourceAirport)
@@ -138,8 +143,11 @@ def getTrip(days, sourceAirport):
     return tripDetails
 
 if __name__ == "__main__":
-    driver = webdriver.Chrome()
-    trip_details = getTrip(driver)
-    print(trip_details)
+    for i in range(3):
+        trip_details = getTrip(i, "AUS")
+        print(trip_details)
+    for i in range(3):
+        trip_details = getTrip(i, "JFK")
+        print(trip_details)
 
 
