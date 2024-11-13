@@ -1,139 +1,316 @@
-import streamlit as st
+data = [
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6623",
+      "html_tag": "div",
+      "name": "Los Angeles",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6626",
+      "html_tag": "span",
+      "name": "$679",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgI0MRoLCNmRBBACGgNVU0Q4KXDZkQQ=",
+        "aria-label": "679 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6668",
+      "html_tag": "div",
+      "name": "Boston",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6671",
+      "html_tag": "span",
+      "name": "$303",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIxNxoLCNzsARACGgNVU0Q4KXDc7AE=",
+        "aria-label": "303 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6683",
+      "html_tag": "div",
+      "name": "Miami",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6686",
+      "html_tag": "span",
+      "name": "$312",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIzMBoLCNzzARACGgNVU0Q4KXDc8wE=",
+        "aria-label": "312 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6698",
+      "html_tag": "div",
+      "name": "Seattle",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6701",
+      "html_tag": "span",
+      "name": "$758",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIzNxoLCJjQBBACGgNVU0Q4KXCY0AQ=",
+        "aria-label": "758 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6713",
+      "html_tag": "div",
+      "name": "Atlanta",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6716",
+      "html_tag": "span",
+      "name": "$317",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIyOBoLCNT3ARACGgNVU0Q4KXDU9wE=",
+        "aria-label": "317 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6758",
+      "html_tag": "div",
+      "name": "Chicago",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6761",
+      "html_tag": "span",
+      "name": "$583",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgEyGgsIvMcDEAIaA1VTRDgpcLzHAw==",
+        "aria-label": "583 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6788",
+      "html_tag": "div",
+      "name": "Toronto",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6791",
+      "html_tag": "span",
+      "name": "$265",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgE1GgsIpc4BEAIaA1VTRDgpcKXOAQ==",
+        "aria-label": "265 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6818",
+      "html_tag": "div",
+      "name": "Austin",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6821",
+      "html_tag": "span",
+      "name": "$775",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgI0NBoLCNncBBACGgNVU0Q4KXDZ3AQ=",
+        "aria-label": "775 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6833",
+      "html_tag": "div",
+      "name": "Denver",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6836",
+      "html_tag": "span",
+      "name": "$538",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIyORoLCKekAxACGgNVU0Q4KXCnpAM=",
+        "aria-label": "538 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "6968",
+      "html_tag": "div",
+      "name": "Qu\u00e9bec City",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "6971",
+      "html_tag": "span",
+      "name": "$742",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgI1MxoLCP/CBBACGgNVU0Q4KXD/wgQ=",
+        "aria-label": "742 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "7373",
+      "html_tag": "div",
+      "name": "El Paso",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "7376",
+      "html_tag": "span",
+      "name": "$765",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgEwGgsI1NUEEAIaA1VTRDgpcNTVBA==",
+        "aria-label": "765 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "7410",
+      "html_tag": "div",
+      "name": "Bozeman",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "7413",
+      "html_tag": "span",
+      "name": "$1,169",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgI1MBoLCKSRBxACGgNVU0Q4KXCkkQc=",
+        "aria-label": "1169 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "7468",
+      "html_tag": "div",
+      "name": "Mazatlan",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "7471",
+      "html_tag": "span",
+      "name": "$729",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgI1MRoLCMS5BBACGgNVU0Q4KXDEuQQ=",
+        "aria-label": "729 US dollars",
+        "role": "text"
+      }
+    }
+  },
+  {
+    "flight_location": {
+      "role": "text",
+      "tf623_id": "7511",
+      "html_tag": "div",
+      "name": "Rapid City",
+      "attributes": {
+        "class": "cCO9qc tdMWuf mxXqs"
+      }
+    },
+    "flight_price": {
+      "role": "text",
+      "tf623_id": "7514",
+      "html_tag": "span",
+      "name": "$1,200",
+      "attributes": {
+        "data-gs": "CjRISDVlcUJUZkh4YUlBRHZzeVFCRy0tLS0tLS0tLW9rYmhuOEFBQUFBR2MwLXVVSXhxcDhBEgIxMhoLCMCpBxACGgNVU0Q4KXDAqQc=",
+        "aria-label": "1200 US dollars",
+        "role": "text"
+      }
+    }
+  }
+]
 
-"""
-## Web scraping on Streamlit Cloud with Selenium
-
-[![Source](https://img.shields.io/badge/View-Source-<COLOR>.svg)](https://github.com/snehankekre/streamlit-selenium-chrome/)
-
-This is a minimal, reproducible example of how to scrape the web with Selenium and Chrome on Streamlit's Community Cloud.
-
-Fork this repo, and edit `/streamlit_app.py` to customize this app to your heart's desire. :heart:
-"""
-
-with st.echo():
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
-    from webdriver_manager.chrome import ChromeDriverManager
-    from webdriver_manager.core.os_manager import ChromeType
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from math import floor, ceil
-    from selenium.webdriver.common.by import By
-
-    TRIP_LENGTH = 5
-
-    @st.cache_resource
-    def get_driver():
-        return webdriver.Chrome(
-            service=Service(
-                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
-            ),
-            options=options,
-        )
-    def formatTripDetails(results):
-        results = results.text.split("\n")
-        formattedTripDetails = []
-        for i in range(floor(len(results)/4)):
-            if len(formattedTripDetails) == 10: # added for POC purposes, more string validation needs to be done before removing this
-                break
-            price = results[i*4+3].replace("$", "")
-            if "hr" not in price:
-                price = int(price)
-            formattedTripDetails.append(
-                {
-                    "destination": results[i*4],
-                    "price": price
-                }
-            )
-        return formattedTripDetails
-
-    def insertLocation(driver, sourceAirport):
-        locationPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input"
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, locationPath))
-        )   
-        locationInput = driver.find_element(By.XPATH, locationPath)
-        locationInput.clear()
-        locationInput.send_keys(sourceAirport)
-        firstOptionPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[6]/div[3]/ul/li"
-                        
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, firstOptionPath))
-        )
-        firstOption = driver.find_element(By.XPATH, firstOptionPath)
-        firstOption.click()
-
-    def insertInputs(driver, days):
-        calendarButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div" 
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, calendarButtonPath))
-        )
-        calendarButton = driver.find_element(By.XPATH, calendarButtonPath)
-        calendarButton.click()
-
-        departureDay = days % 7 + 1
-        departureWeek = ceil((days+1)/7)
-        departurePath = f"/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div[3]/div[{departureWeek}]/div[{departureDay}]"
-        returnDay = (days+TRIP_LENGTH) % 7 + 1
-        returnWeek = ceil((departureDay+TRIP_LENGTH)/7)
-        returnPath =    f"/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div[3]/div[{returnWeek}]/div[{returnDay}]"
-        print("depart"+departurePath)
-
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, departurePath))
-        )
-        departureDateClick = driver.find_element(By.XPATH, departurePath)
-        departureDateClick.click()
-        
-        print("return"+returnPath)
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, returnPath))
-        )
-        returnDateClick = driver.find_element(By.XPATH, returnPath)
-        returnDateClick.click()
-
-        donePath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[3]/div[3]/div/button"
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, donePath))
-        )
-        doneButton = driver.find_element(By.XPATH, donePath)
-        doneButton.click()
-
-        
-
-    def getResults(driver):
-        searchButtonPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[2]/div/button/span[1]"
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, searchButtonPath))
-        )
-        searchButtonPath = driver.find_element(By.XPATH, searchButtonPath)
-        searchButtonPath.click()
-
-        resultsPath = "/html/body/c-wiz[3]/div/div[2]/c-wiz/div[2]/div/div/div[1]/main/div/div[2]/div/ol"
-        WebDriverWait(driver, 40).until(
-            EC.presence_of_element_located((By.XPATH, resultsPath))
-        )
-        return driver.find_element(By.XPATH, resultsPath)
-
-    def getTrip(days, sourceAirport):
-        options = webdriver.ChromeOptions()
-        # Below options used to prevent errors when deployed
-        options.add_argument("--disable-gpu")
-        options.add_argument("--headless")
-        driver = webdriver.Chrome(
-            service=Service(
-                ChromeDriverManager().install() #chrome_type=ChromeType.CHROMIUM
-                ), 
-                options=options
-                )
-        driver.get("https://www.google.com/travel/flights")
-        insertInputs(driver, days)
-        insertLocation(driver, sourceAirport)
-        
-        rawTripDetails = getResults(driver)
-
-        tripDetails = formatTripDetails(rawTripDetails)
-        driver.quit()
-
-        return tripDetails
+for flight in data:
+    flight_location_name = flight["flight_location"]["name"]
+    flight_price_name = flight["flight_price"]["name"]
+    print(f"Flight Location: {flight_location_name}, Flight Price: {flight_price_name}")
+    # Used only for demo purposes. It allows you to see the effect of the script.

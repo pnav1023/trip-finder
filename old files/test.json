@@ -1,0 +1,310 @@
+[
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6624",
+        "html_tag": "div",
+        "name": "Los Angeles",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6627",
+        "html_tag": "span",
+        "name": "$679",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgI0NRoLCNmRBBACGgNVU0Q4KXDZkQQ=",
+          "aria-label": "679 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6669",
+        "html_tag": "div",
+        "name": "Boston",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6672",
+        "html_tag": "span",
+        "name": "$343",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIxNxoLCPyLAhACGgNVU0Q4KXD8iwI=",
+          "aria-label": "343 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6684",
+        "html_tag": "div",
+        "name": "Miami",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6687",
+        "html_tag": "span",
+        "name": "$298",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIxMBoLCOjoARACGgNVU0Q4KXDo6AE=",
+          "aria-label": "298 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6699",
+        "html_tag": "div",
+        "name": "Seattle",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6702",
+        "html_tag": "span",
+        "name": "$714",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIzMhoLCOitBBACGgNVU0Q4KXDorQQ=",
+          "aria-label": "714 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6714",
+        "html_tag": "div",
+        "name": "Atlanta",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6717",
+        "html_tag": "span",
+        "name": "$317",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgI1ORoLCNT3ARACGgNVU0Q4KXDU9wE=",
+          "aria-label": "317 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6759",
+        "html_tag": "div",
+        "name": "Chicago",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6762",
+        "html_tag": "span",
+        "name": "$597",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIyMxoLCLTSAxACGgNVU0Q4KXC00gM=",
+          "aria-label": "597 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6789",
+        "html_tag": "div",
+        "name": "Toronto",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6792",
+        "html_tag": "span",
+        "name": "$265",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgI1OBoLCKXOARACGgNVU0Q4KXClzgE=",
+          "aria-label": "265 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6819",
+        "html_tag": "div",
+        "name": "Austin",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6822",
+        "html_tag": "span",
+        "name": "$775",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIzMxoLCNncBBACGgNVU0Q4KXDZ3AQ=",
+          "aria-label": "775 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6834",
+        "html_tag": "div",
+        "name": "Denver",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6837",
+        "html_tag": "span",
+        "name": "$574",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIxNhoLCLjAAxACGgNVU0Q4KXC4wAM=",
+          "aria-label": "574 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "6969",
+        "html_tag": "div",
+        "name": "Qu\u00e9bec City",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "6972",
+        "html_tag": "span",
+        "name": "$742",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgEyGgsI/8IEEAIaA1VTRDgpcP/CBA==",
+          "aria-label": "742 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "7374",
+        "html_tag": "div",
+        "name": "El Paso",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "7377",
+        "html_tag": "span",
+        "name": "$808",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgI0MxoLCKD3BBACGgNVU0Q4KXCg9wQ=",
+          "aria-label": "808 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "7411",
+        "html_tag": "div",
+        "name": "Bozeman",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "7414",
+        "html_tag": "span",
+        "name": "$1,228",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIxMRoLCLC/BxACGgNVU0Q4KXCwvwc=",
+          "aria-label": "1228 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "7469",
+        "html_tag": "div",
+        "name": "Mazatlan",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "7472",
+        "html_tag": "span",
+        "name": "$651",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgIzORoLCJT8AxACGgNVU0Q4KXCU/AM=",
+          "aria-label": "651 US dollars",
+          "role": "text"
+        }
+      }
+    },
+    {
+      "flight_location": {
+        "role": "text",
+        "tf623_id": "7512",
+        "html_tag": "div",
+        "name": "Rapid City",
+        "attributes": {
+          "class": "cCO9qc tdMWuf mxXqs"
+        }
+      },
+      "flight_price": {
+        "role": "text",
+        "tf623_id": "7515",
+        "html_tag": "span",
+        "name": "$1,221",
+        "attributes": {
+          "data-gs": "CjRIT2FteEU3UEZ3Y1FBQ1dyVFFCRy0tLS0tLS0tLW95bGIxMUFBQUFBR2MwZE1jRUZtZmlBEgE2GgsI9LkHEAIaA1VTRDgpcPS5Bw==",
+          "aria-label": "1221 US dollars",
+          "role": "text"
+        }
+      }
+    }
+  ]
