@@ -5,7 +5,7 @@ import json
 
 def getTrip():
     # Initialise the browser
-    with sync_playwright() as playwright, playwright.chromium.launch(headless=False) as browser:
+    with sync_playwright() as playwright, playwright.chromium.launch(headless=True) as browser:
         page = agentql.wrap(browser.new_page())
         page.goto("https://www.google.com/travel/flights")
 
