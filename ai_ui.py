@@ -30,7 +30,7 @@ def formatData(source):
 
 col1, col2 = st.columns([1, 1])
 with col1:
-    st.text_input('Source Airport 1', 'AUS', disabled=True)
+    st.text_input('Source Airport 1', 'JFK', disabled=True)
     start_date = st.date_input('Possible start date', pd.to_datetime('2024-12-01'), disabled=True)
     end_date = st.date_input('Possible end date', pd.to_datetime('2024-12-08'), disabled=True)
     st.text_input('Duration', '5', disabled=True)
