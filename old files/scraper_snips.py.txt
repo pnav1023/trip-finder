@@ -1,0 +1,59 @@
+#Snippets of code that can be used in scraper if necessary
+
+tripTypePath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[1]/div[1]/div"
+tripTypeButton = driver.find_element(By.XPATH, tripTypePath)
+tripTypeButton.click()
+
+oneWayPath = "/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[1]/div[1]/div/div/div/div[2]/ul/li[2]"
+oneWayButton = driver.find_element(By.XPATH, oneWayPath)
+oneWayButton.click()
+
+====================
+
+flights_data = []
+for flight in response.modal.flight_data:
+    flight_location_name = flight.flight_location.text_content()
+    flight_price_name = flight.flight_price.text_content()
+    flights_data.append({
+        "flight_location": flight_location_name,
+        "flight_price": flight_price_name
+    })
+
+# flights_json = json.dumps(flights_data)
+return flights_data
+# Used only for demo purposes. It allows you to see the effect of the script.
+page.wait_for_timeout(10000)
+
+===========
+
+    ss.filteredTrips = []
+    st.code(ss.travelData)
+    if st.button('show trips'): 
+        for i in range(len(dates)):
+            sourceA = ss.travelData[0]['trips'][i]['details']
+            sourceB = ss.travelData[1]['trips'][i]['details']
+            for tripA in sourceA:
+                for tripB in sourceB:
+                    if tripA['destination'] == tripB['destination']:
+                        j = 0
+                        for j in range(len(ss.filteredTrips)):
+                            totalPrice = 0
+                            for trip in ss.filteredTrips[j]['trips']:
+                                totalPrice += trip['price']
+                            if totalPrice > tripA['price'] + tripB['price']:
+                                break
+                        ss.filteredTrips.insert(j, 
+                        {
+                            'dates': dates[i],
+                            'destination': tripA['destination'],
+                            'trips': [{
+                                        'source': ss.travelData[0]['sourceAirport'],
+                                        'price': tripA['price']
+                                    },
+                                    {
+                                        'source': ss.travelData[1]['sourceAirport'],
+                                        'price': tripB['price']
+                                    }]
+                        })
+
+        st.code(ss.filteredTrips)
