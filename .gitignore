@@ -1,5 +1,2 @@
-__pycache__/*
-myenv/*
-old_files/*
 .env
-Dockerfile
+myenv/*
