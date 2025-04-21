@@ -1,4 +1,4 @@
-from serpapi import GoogleSearch
+from serpapi.google_search import GoogleSearch
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
@@ -6,9 +6,9 @@ from pydantic import BaseModel, Field, ValidationError
 import datetime
 from calendar import monthrange
 
+from db import check_flight_exists, create_flight_data, get_flight_data, get_supabase_client
+
 global_checked_flights = []
-
-
 
 test_data = {
    "search_metadata":{
@@ -536,35 +536,47 @@ class Flight(BaseModel):
     
     
 def get_flights(departure_id, arrival_id, outbound_date):
-    load_dotenv()
+   load_dotenv()
 
-    if outbound_date in global_checked_flights:
-        print(f"{outbound_date} - Recent flight search. Pulling from DB (not implemented)")
-      #   return None
-    else:
-        print(f"{outbound_date} - New flight search. Adding to DB (not implemented)")
-        global_checked_flights.append(outbound_date)
-      #   return None
+   supabase = get_supabase_client()
+   flight_id = check_flight_exists(supabase, outbound_date, departure_id, arrival_id)
+   if flight_id is not None:
+      print(f"{outbound_date} - Recent flight search. Pulling from DB")
+      flight_data = get_flight_data(supabase, flight_id)
+      return flight_data["serp_google_result"]
+   else:
+      print(f"{outbound_date} - New flight search. Adding to DB")
+      global_checked_flights.append(outbound_date)
+      params = {
+         "api_key": os.getenv("SERP_API_KEY"),
+         "engine": "google_flights",
+         "hl": "en",
+         "gl": "us",
+         "departure_id": departure_id,
+         "arrival_id": arrival_id,
+         "outbound_date": outbound_date,
+         "currency": "USD",
+         "stops": "1",
+         "deep_search": "true",
+         "sort_by": "2",
+         "type": "2" # 2 for one way, 1 for round trip
+      }
 
-    params = {
-        "api_key": os.getenv("SERP_API_KEY"),
-        "engine": "google_flights",
-        "hl": "en",
-        "gl": "us",
-        "departure_id": departure_id,
-        "arrival_id": arrival_id,
-        "outbound_date": outbound_date,
-        "currency": "USD",
-        "stops": "1",
-        "deep_search": "true",
-        "sort_by": "2",
-        "type": "2" # 2 for one way, 1 for round trip
-    }
+      search = GoogleSearch(params)
+      results = search.get_dict()
 
-    search = GoogleSearch(params)
-    results = search.get_dict()
+      # Create flight data with full SERP results
+      create_flight_data(
+         supabase,
+         flight_date=outbound_date,
+         flight_url=results["search_metadata"]["google_flights_url"],
+         flight_price=results["price_insights"]["lowest_price"],
+         departing_airport_code=departure_id,
+         arriving_airport_code=arrival_id,
+         serp_google_result=results  # Store the complete results JSON
+      )
 
-    return results
+      return results
 
 def generate_trip_dates(months, trip_length, year):
     """
