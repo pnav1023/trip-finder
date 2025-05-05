@@ -47,7 +47,6 @@ def generate_trip_dates(months, trip_length, year):
         "September": 9, "October": 10, "November": 11, "December": 12
     }
     month_nums = [month_to_num[month_name] for month_name in months if month_name in month_to_num]
-    
     trip_periods = []
     
     for month_name in months:
@@ -107,20 +106,24 @@ def process_chat(message):
     return flight_queries
 
 if __name__ == "__main__":
-    "I want to go to LAX from BOS in May and June and the average trip length is 28 days"
+    "I want to go to LAX from BOS in June and the average trip length is 28 days"
     load_dotenv()
     # departure_airport_ids = input("Enter the airport codes of the departure airports in a comma separated list: ")
     # arrival_airport_id = input("Enter the airport code of the arrival airport: ")
     # months = input("Enter the months of travel in a comma separated list: ")
     # average_trip_length = input("Enter the average trip length: ")
 
-    departure_airport_ids = "BOS,LAX,AUS,ORH"
-    arrival_airport_id = "SFO"
-    months = "February"
+    departure_airport_ids = "BOS"#,AUS,ORH"
+    arrival_airport_id = "AUS"
+    months = ["June"]
     average_trip_length = 28
 
-    message = f"I want to go to {arrival_airport_id} from {departure_airport_ids} in {months} and the average trip length is {average_trip_length} days"
-    payloads = generate_api_payloads(departure_airport_ids, arrival_airport_id, months.split(","), average_trip_length)
+    message = f"I want to go to {arrival_airport_id} from {departure_airport_ids} in {months[0]} and the average trip length is {average_trip_length} days"
+    print(message)
+    result = process_chat(message)
+    # condense the next 4
+    payloads = generate_api_payloads(result.departure_id, result.arrival_id, result.months, result.average_trip_length)
+    # payloads = generate_api_payloads(departure_airport_ids, arrival_airport_id, months, average_trip_length)
     for i, payload in enumerate(payloads):
         try:
             if i % 2 == 0:

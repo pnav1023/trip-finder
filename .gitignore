@@ -1,6 +1,10 @@
 .env
-myenv/*
+my_env/*
 
 
 __pycache__/*
 ui/node_modules/*
+
+ui/src/dist/*
+ui/src/node_modules/*
+ui/dist/*

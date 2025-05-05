@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, Tuple, List
 import datetime
-
+from fastapi.middleware.cors import CORSMiddleware
 # Assuming your existing functions are in flights.py and db.py
 # Make sure these imports work based on your project structure
 from flights import process_chat, generate_trip_dates, find_cheapest_flights, Flight
@@ -28,6 +28,15 @@ app = FastAPI(
     title="Flight Search API",
     description="API to find the cheapest flight options based on user queries.",
     version="0.1.0",
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Your frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # --- API Endpoint ---

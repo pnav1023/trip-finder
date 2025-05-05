@@ -1,0 +1,65 @@
+---
+description: React & TypeScript coding standards for consistent, maintainable code. Naming, imports, documentation, typing, component design, error handling, and testing guidelines.
+globs: *.tsx,*.ts,src/**/*
+---
+---
+
+description: React & TypeScript coding standards for consistent, maintainable code. Naming, imports, documentation, typing, component design, error handling, and testing guidelines.
+globs: *.tsx,*.ts,src/**/*
+
+---
+
+**Naming**
+- Use descriptive names; avoid single letters except i, j, k or map/filter params (item, el).
+- camelCase for variables/functions; PascalCase for classes, interfaces, types, enums, React components, and component filenames.
+- UPPER_SNAKE_CASE for true constants; camelCase for other immutable values.
+- Prefix booleans with is/has/should/can (e.g., isLoading).
+- Event handlers: on<Event> for props (e.g., onClick), handle<Event> for functions (e.g., handleClick).
+- PascalCase for component files; kebab-case for non-component files and directories.
+
+**Imports**
+- Group: (1) React, (2) external libs, (3) internal (components, utils, types), (4) CSS.
+- Separate groups with blank lines; alphabetize within groups.
+- Prefer named imports unless default is primary export.
+- Place all imports at file top.
+
+**Documentation**
+- Use JSDoc (/** ... */) for exported components, hooks, complex functions, types, interfaces.
+- First line: summary; blank line; details if needed.
+- Document props interfaces; use @param, @returns, etc.
+- Inline comments: explain "why", not "what"; keep current; write full sentences.
+
+**Typing**
+- Use TypeScript types everywhere: props, state, API, complex objects.
+- Type function signatures, component props, state, hook returns; type variables in functions if clarity improves.
+- Avoid any; use unknown if type is unclear.
+- Use tsc and ESLint (@typescript-eslint) for static analysis.
+
+**Component Design**
+- Keep components small, focused, functional, and use hooks.
+- Extract reusable logic/UI into hooks/components.
+- Destructure props/state at top of function.
+- Use descriptive prop/variable names; avoid magic values (use named constants).
+- Choose state management appropriate to complexity; avoid prop drilling.
+- Use React.memo/useCallback/useMemo when profiling indicates need.
+
+**Error Handling**
+- Handle errors in async ops and complex logic.
+- Always handle Promise rejections.
+- Never silently swallow errors; log or show user-friendly messages.
+- Use Error Boundaries for rendering errors.
+
+**Testing**
+- Focus on tests that increase confidence in critical flows, complex logic, and component interactions.
+- Unit: test behavior of components, hooks, utils (Jest/Vitest + RTL).
+- E2E: test user flows (Cypress/Playwright).
+- Prioritize meaningful tests over code coverage.
+
+@constants.ts
+@src/components
+@src/utils
+@src/types
+
+---
+
+This rule applies to all React and TypeScript files and directories in the project. It encodes standards for naming, imports, documentation, typing, component design, error handling, and pragmatic testing, as described in project documentation.

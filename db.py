@@ -252,12 +252,12 @@ def check_flight_exists(supabase, flight_date: str, departure_id: str, arrival_i
 def main():
     # Dates are now strings in YYYY-MM-DD format
     flights = [
-        ["AUS", "BOS", "2025-08-31", 158.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA4LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
-        ["BOS", "AUS", "2025-08-03", 171.0, "test"],
-        ["AUS", "BOS", "2025-08-30", 171.0, "test"],
-        ["BOS", "AUS", "2025-08-02", 171.0, "test"],
-        ["AUS", "BOS", "2025-08-29", 171.0, "test"],
-        ["BOS", "AUS", "2025-08-01", 171.0, "test"]
+        ["BOS", "AUS", "2025-06-03", 100.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
+        ["AUS", "BOS", "2025-06-30", 400.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
+        ["BOS", "AUS", "2025-06-02", 300.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
+        ["AUS", "BOS", "2025-06-29", 200.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
+        ["BOS", "AUS", "2025-06-01", 100.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"],
+        ["AUS", "BOS", "2025-06-28", 158.0, "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhogEgoyMDI1LTA2LTMxKABqBwgBEgNBVVNyBwgBEgNCT1NCAQFIAXABmAEC&tfu=EgIIAg"]
     ]
     print("Starting flight data operations...")
     supabase = get_supabase_client()
